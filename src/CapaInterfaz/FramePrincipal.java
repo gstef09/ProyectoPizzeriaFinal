@@ -227,6 +227,11 @@ System.exit(0);
 
     private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
         // TODO add your handling code here:
+        
+        Login controlAcceso =new Login();
+        controlAcceso.setLocationRelativeTo(null);
+        controlAcceso.setVisible(true);
+        this.dispose();
       
     }//GEN-LAST:event_saveMenuItemActionPerformed
 
