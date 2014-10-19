@@ -58,6 +58,7 @@ GestionProducto producto = new GestionProducto ();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla_datos = new javax.swing.JTable();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtId.addKeyListener(new java.awt.event.KeyAdapter() {

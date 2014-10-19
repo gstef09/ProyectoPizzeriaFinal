@@ -190,7 +190,19 @@ public class InterfazCliente extends javax.swing.JInternalFrame{
 
         jLabel7.setText("Telefono");
 
+        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelKeyTyped(evt);
+            }
+        });
+
         jLabel8.setText("Cedula");
+
+        txtCed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedKeyTyped(evt);
+            }
+        });
 
         txtSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione:", "M", "F" }));
 
@@ -427,6 +439,16 @@ a.addKeyListener(new KeyAdapter() {
     }
 });
 }
+public void SNumeros(JTextField a){//solo numeros
+a.addKeyListener(new KeyAdapter() {
+    public void keyTyped (KeyEvent e){
+        char c=e.getKeyChar();
+        if(!Character.isDigit(c)){
+            e.consume();
+        }
+    }
+});
+}
 
 
     private void btnElimiinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElimiinarActionPerformed
@@ -500,6 +522,20 @@ a.addKeyListener(new KeyAdapter() {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtCedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((c!='-')&&(c<'0'||c>'9'))
+                {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCedKeyTyped
+
+    private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
+        // TODO add your handling code here:
+        SNumeros(txtTel);
+    }//GEN-LAST:event_txtTelKeyTyped
 
     /**     * @param args the command line arguments
 

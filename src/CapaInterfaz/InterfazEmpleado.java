@@ -181,9 +181,27 @@ public class InterfazEmpleado extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Telefono");
 
+        txtTel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelKeyTyped(evt);
+            }
+        });
+
         jLabel8.setText("Cedula");
 
+        txtCed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedKeyTyped(evt);
+            }
+        });
+
         txtSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione:", "M", "F" }));
+
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdadKeyTyped(evt);
+            }
+        });
 
         jbtconsulta1.setText("Generar Reporte");
         jbtconsulta1.addActionListener(new java.awt.event.ActionListener() {
@@ -193,6 +211,12 @@ public class InterfazEmpleado extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setText("Cargo");
+
+        txtcargo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcargoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -455,6 +479,16 @@ a.addKeyListener(new KeyAdapter() {
     }
 });
 }
+public void SNumero (JTextField a){//solo letras
+a.addKeyListener(new KeyAdapter() {
+    public void keyTyped (KeyEvent e){
+        char c=e.getKeyChar();
+        if(!Character.isDigit(c)){
+            e.consume();
+        }
+    }
+});
+}
     private void jbtconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtconsultaActionPerformed
 
     try {
@@ -489,6 +523,30 @@ a.addKeyListener(new KeyAdapter() {
         // TODO add your handling code here:
           
     }//GEN-LAST:event_jbtconsulta1ActionPerformed
+
+    private void txtCedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if((c!='-')&&(c<'0'||c>'9'))
+                {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCedKeyTyped
+
+    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+        // TODO add your handling code here:
+        SNumero(txtEdad);
+    }//GEN-LAST:event_txtEdadKeyTyped
+
+    private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
+        // TODO add your handling code here:
+        SNumero(txtTel);
+    }//GEN-LAST:event_txtTelKeyTyped
+
+    private void txtcargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcargoKeyTyped
+        // TODO add your handling code here:
+        SLetras(txtcargo);
+    }//GEN-LAST:event_txtcargoKeyTyped
 
     /**     * @param args the command line arguments
 

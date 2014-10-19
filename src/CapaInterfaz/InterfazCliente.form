@@ -353,6 +353,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtTel">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTelKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -360,6 +363,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCed">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCedKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="txtSexo">
           <Properties>
