@@ -24,7 +24,7 @@ public class GestionFactura implements IGestion {
      DefaultTableModel tablaFactura;
      
     public GestionFactura(){
-    factura = new Factura(0,null,0,0,0,0,0,0,null);
+    factura = new Factura(0,null,0,0,0,0,0,0,0,null);
     Conexionbd.setPersona("DBA");
         Conexionbd.setClave("sql");
         Conexionbd.setCadenaConexion("jdbc:sqlanywhere:uid=DBA;pwd=sql;eng=ProyectoPizzeria;database=ProyectoPizzeria");
@@ -39,6 +39,7 @@ public class GestionFactura implements IGestion {
        factura.setDescuento(0);
        factura.setIva(0);
        factura.setTotalF(0);
+       factura.setCodigo_Pizzeria(0);
        factura.setDetalle(null);
     }
 
@@ -46,11 +47,11 @@ public class GestionFactura implements IGestion {
     public void Insertar() throws SQLException {
         try {
             Conexionbd.getInstancia().conectar();
-            Conexionbd.getInstancia().ejecutar("insert into factura (N_Factura , Fecha, Codigo_Cliente ,Codigo_Empleado,Subtotal, Descuento, Iva,Total_Factura)"+
+            Conexionbd.getInstancia().ejecutar("insert into factura (N_Factura , Fecha, Codigo_Cliente ,Codigo_Empleado,Subtotal, Descuento, Iva,Total_Factura,Codigo_Pizzeria)"+
                   "values ("+ factura.getN_Factura()
                  +","+factura.getFecha()
                 +","+factura.getCodigoCliente()
-                +","+factura.getCodigoEmpleado()+","+factura.getSubtotal()+","+factura.getDescuento()+","+factura.getIva()+","+factura.getTotalF()+")");
+                +","+factura.getCodigoEmpleado()+","+factura.getSubtotal()+","+factura.getDescuento()+","+factura.getIva()+","+factura.getTotalF()+factura.getCodigo_Pizzeria()+")");
           
           for (Detalle_Factura detFact:factura.getDetalle()){
               Conexionbd.getInstancia().ejecutar("inser into FacturaCelular (Codigo_Detalle,N_Factura,Codigo_Producto,Nombre_Producto,Cantidad,Precio_Unitario,Precio_Venta)"
@@ -83,6 +84,7 @@ public class GestionFactura implements IGestion {
               factura.setDescuento(rs.getDouble(6));
               factura.setIva(rs.getDouble(7));
               factura.setTotalF(rs.getDouble(8));
+              factura.setCodigo_Pizzeria(rs.getInt(9));
               
                       
            }  
@@ -114,7 +116,7 @@ public class GestionFactura implements IGestion {
     @Override
     public DefaultTableModel cargarTabla() throws SQLException {
          String[] columnas = {"N_Factura","Fecha", "Cod_Cliente", "Cod_Empleado","Subtotal", "Descuento","IVA","Total" };
-        String[] registro = new String[8];
+        String[] registro = new String[9];
         this.tablaFactura=new DefaultTableModel((Object[][])null,columnas);
         
         try
@@ -131,6 +133,7 @@ public class GestionFactura implements IGestion {
                 registro[5]=rs.getString(6);
                 registro[6]=rs.getString(7);
                 registro[7]=rs.getString(8);
+                registro[8]=rs.getString(9);
                 this.tablaFactura.addRow(registro);                
             }
         }

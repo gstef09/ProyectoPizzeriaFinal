@@ -69,6 +69,7 @@ public class InterfazFactura extends javax.swing.JInternalFrame{
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setName(""); // NOI18N
@@ -400,12 +401,12 @@ public class InterfazFactura extends javax.swing.JInternalFrame{
           double p=Double.parseDouble(precio);
           suma=c*p;
            subtot+=suma;    
-             des=(subtot*10)/100;
-             iva=(subtot*12)/100;
-             total=subtot-des;
+             des=(subtot*(Double.parseDouble(txtdes.getText())))/100;
+             iva=((subtot-des)*12)/100;
+             total=subtot+iva;
             Tabla_Factura.setValueAt(suma, i, 5);
              txtsubtotal.setText(""+subtot);
-             txtdes.setText(""+des);
+             //txtdes.setText(""+des);
              txtiva.setText(""+iva);
              txttotal.setText(""+total);   
 //      
@@ -484,8 +485,6 @@ public class InterfazFactura extends javax.swing.JInternalFrame{
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable1;
     public static javax.swing.JTextField txtCed;
     public static javax.swing.JTextField txtCod;

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Factura {
 
-    public Factura(int N_Factura, Date Fecha, int CodigoCliente, int CodigoEmpleado, double Subtotal, double Descuento, double Iva, double TotalF, ArrayList<Detalle_Factura> detalle) {
+    public Factura(int N_Factura, Date Fecha, int CodigoCliente, int CodigoEmpleado, double Subtotal, double Descuento, double Iva, double TotalF, int Codigo_Pizzeria,ArrayList<Detalle_Factura> detalle) {
         this.N_Factura = N_Factura;
         this.Fecha = Fecha;
         this.CodigoCliente = CodigoCliente;
@@ -23,7 +23,9 @@ public class Factura {
         this.Descuento = Descuento;
         this.Iva = Iva;
         this.TotalF = TotalF;
+        this.Codigo_Pizzeria=Codigo_Pizzeria;
         this.detalle=detalle;
+        
     }
 
     
@@ -202,6 +204,15 @@ public class Factura {
 
     public void setDetalle(ArrayList<Detalle_Factura> detalle) {
         this.detalle = detalle;
+    }
+     private int Codigo_Pizzeria;
+
+    public int getCodigo_Pizzeria() {
+        return Codigo_Pizzeria;
+    }
+
+    public void setCodigo_Pizzeria(int Codigo_Pizzeria) {
+        this.Codigo_Pizzeria = Codigo_Pizzeria;
     }
      
 }
