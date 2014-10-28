@@ -8,6 +8,7 @@ package CapaInterfaz;
 
 
 import Gestiones.GestionEmpleado;
+import ClasesPojo.Validaciones;
 
 
 import java.awt.event.KeyAdapter;
@@ -22,7 +23,7 @@ import javax.swing.JTextField;
 public class InterfazEmpleado extends javax.swing.JInternalFrame {
 
     GestionEmpleado empleados = new GestionEmpleado ();
-    
+    Validaciones validaciones = new Validaciones();
    
     /**
      * Creates new form Interfaz
@@ -469,26 +470,7 @@ txtcargo.setText(empleados.getEmpleados().getCargo());
         txtTel.setText(empleados.getEmpleados().getTelefono());
         txtCed.setText(empleados.getEmpleados().getCedula());            
     }//GEN-LAST:event_btnNuevoActionPerformed
-public void SLetras (JTextField a){//solo letras
-a.addKeyListener(new KeyAdapter() {
-    public void keyTyped (KeyEvent e){
-        char c=e.getKeyChar();
-        if(Character.isDigit(c)){
-            e.consume();
-        }
-    }
-});
-}
-public void SNumero (JTextField a){//solo letras
-a.addKeyListener(new KeyAdapter() {
-    public void keyTyped (KeyEvent e){
-        char c=e.getKeyChar();
-        if(!Character.isDigit(c)){
-            e.consume();
-        }
-    }
-});
-}
+
     private void jbtconsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtconsultaActionPerformed
 
     try {
@@ -511,12 +493,12 @@ a.addKeyListener(new KeyAdapter() {
 
     private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
         // TODO add your handling code here:
-        SLetras(txtNombre);
+        validaciones.SLetras(txtNombre);
     }//GEN-LAST:event_txtNombreKeyPressed
 
     private void txtApeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeKeyPressed
         // TODO add your handling code here:
-        SLetras(txtApe);
+        validaciones.SLetras(txtApe);
     }//GEN-LAST:event_txtApeKeyPressed
 
     private void jbtconsulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtconsulta1ActionPerformed
@@ -526,26 +508,22 @@ a.addKeyListener(new KeyAdapter() {
 
     private void txtCedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((c!='-')&&(c<'0'||c>'9'))
-                {
-            evt.consume();
-        }
+        validaciones.Cedula(txtCed);
     }//GEN-LAST:event_txtCedKeyTyped
 
     private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
         // TODO add your handling code here:
-        SNumero(txtEdad);
+        validaciones.SNumeros(txtEdad);
     }//GEN-LAST:event_txtEdadKeyTyped
 
     private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
         // TODO add your handling code here:
-        SNumero(txtTel);
+        validaciones.SNumeros(txtTel);
     }//GEN-LAST:event_txtTelKeyTyped
 
     private void txtcargoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcargoKeyTyped
         // TODO add your handling code here:
-        SLetras(txtcargo);
+        validaciones.SLetras(txtcargo);
     }//GEN-LAST:event_txtcargoKeyTyped
 
     /**     * @param args the command line arguments

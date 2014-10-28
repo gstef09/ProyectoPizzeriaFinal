@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package CapaInterfaz;
-import ClasesPojo.Producto;
+
 import Gestiones.GestionProducto;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import ClasesPojo.Validaciones;
+
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 /**
@@ -20,6 +19,7 @@ import javax.swing.JTextField;
 public class InterfazProducto extends javax.swing.JInternalFrame{
 
 GestionProducto producto = new GestionProducto ();
+Validaciones validaciones =new Validaciones();
     /**
      * Creates new form InterfazBebida
      */
@@ -298,7 +298,8 @@ GestionProducto producto = new GestionProducto ();
 
     private void txtIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyPressed
         // TODO add your handling code here:
-
+        validaciones.SNumeros(txtId);
+        
     }//GEN-LAST:event_txtIdKeyPressed
 
     private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
@@ -334,6 +335,7 @@ GestionProducto producto = new GestionProducto ();
 
     private void txtStockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyPressed
         // TODO add your handling code here:
+        validaciones.SNumeros(txtId);
     }//GEN-LAST:event_txtStockKeyPressed
 
     private void txtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyTyped
@@ -342,6 +344,7 @@ GestionProducto producto = new GestionProducto ();
 
     private void txtPrecioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyPressed
         // TODO add your handling code here:
+        validaciones.Decimales(txtPrecio);
     }//GEN-LAST:event_txtPrecioKeyPressed
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped

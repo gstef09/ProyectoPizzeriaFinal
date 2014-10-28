@@ -8,14 +8,11 @@ package CapaInterfaz;
 
 
 import Gestiones.GestionCliente;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import ClasesPojo.Validaciones;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -25,7 +22,7 @@ import net.sf.jasperreports.engine.JRException;
 public class InterfazCliente extends javax.swing.JInternalFrame{
 
     GestionCliente cliente = new GestionCliente ();
-    
+    Validaciones validaciones =new Validaciones();
     
    
     /**
@@ -432,26 +429,7 @@ public void eli(){
         }
 
     }//GEN-LAST:event_btnModiActionPerformed
-public void SLetras (JTextField a){//solo letras
-a.addKeyListener(new KeyAdapter() {
-    public void keyTyped (KeyEvent e){
-        char c=e.getKeyChar();
-        if(Character.isDigit(c)){
-            e.consume();
-        }
-    }
-});
-}
-public void SNumeros(JTextField a){//solo numeros
-a.addKeyListener(new KeyAdapter() {
-    public void keyTyped (KeyEvent e){
-        char c=e.getKeyChar();
-        if(!Character.isDigit(c)){
-            e.consume();
-        }
-    }
-});
-}
+
 
 
     private void btnElimiinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElimiinarActionPerformed
@@ -499,6 +477,7 @@ a.addKeyListener(new KeyAdapter() {
 
     private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
         // TODO add your handling code here:
+        validaciones.SNumeros(txtId);
        
     }//GEN-LAST:event_txtIdKeyTyped
 
@@ -514,12 +493,12 @@ a.addKeyListener(new KeyAdapter() {
 
     private void txtApeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApeKeyPressed
         // TODO add your handling code here:
-        SLetras(txtApe);
+        validaciones.SLetras(txtApe);
     }//GEN-LAST:event_txtApeKeyPressed
 
     private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
         // TODO add your handling code here:
-        SLetras(txtNombre);
+        validaciones.SLetras(txtNombre);
     }//GEN-LAST:event_txtNombreKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -538,16 +517,13 @@ a.addKeyListener(new KeyAdapter() {
 
     private void txtCedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar();
-        if((c!='-')&&(c<'0'||c>'9'))
-                {
-            evt.consume();
-        }
+        validaciones.Cedula(txtCed);
     }//GEN-LAST:event_txtCedKeyTyped
 
     private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
         // TODO add your handling code here:
-        SNumeros(txtTel);
+        validaciones.SNumeros(txtTel);
+        
     }//GEN-LAST:event_txtTelKeyTyped
 
     /**     * @param args the command line arguments
