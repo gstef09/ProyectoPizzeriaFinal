@@ -9,6 +9,11 @@ package CapaInterfaz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
@@ -29,45 +34,48 @@ public class Login extends javax.swing.JFrame {
     }
 
     
-    public void IniciarSesion(){
-     final String u="admin" ,p="admin"; 
-        String user=txtUsuario.getText();
-          String pass=this.txtContraseña.getText();
-        objetotimer = new Timer(80,new claseTimer());
-                        try
-	                {
-	                    //chekar si el usuario escrbio el nombre de usuario y pw
-	                    if (txtUsuario.getText().length() > 0 && txtContraseña.getText().length() > 0 )
-	                    {
-	                        // Si el usuario si fue validado correctamente
-	                        if(  user.equals(u) && pass.equals(p) )    //enviar datos a validar
-                                    
-	                        {
-	                          objetotimer.start();
-                                 
-	                        }
-	                        else
-	                        {
-	                            JOptionPane.showMessageDialog(null, "El nombre de usuario y/o contrasenia no son validos.");
-	                            
-	                            txtUsuario.setText("");    //limpiar campos
-	                            txtContraseña.setText("");
-
-	                            txtUsuario.requestFocusInWindow();
-	                        }
-
-	                    }
-                            else
-	                    {
-	                        JOptionPane.showMessageDialog(null, "Debe escribir nombre de usuario y contrasenia.\n" +
-	                            "NO puede dejar ningun campo vacio");
-                                txtUsuario.requestFocusInWindow();
-	                    }
-
-	                } catch (Exception e)
-	                {
-	                    e.printStackTrace();
-	                }}
+    public void IniciarSesion( ){
+//     final String u="admin" ,p="admin"; 
+//        String user=txtUsuario.getText();
+//          String pass=this.txtContraseña.getText();
+//        objetotimer = new Timer(80,new claseTimer());
+//                        try
+//	                {
+//	                    //chekar si el usuario escrbio el nombre de usuario y pw
+//	                    if (txtUsuario.getText().length() > 0 && txtContraseña.getText().length() > 0 )
+//	                    {
+//	                        // Si el usuario si fue validado correctamente
+//	                        if(  user.equals(u) && pass.equals(p) )    //enviar datos a validar
+//                                    
+//	                        {
+//	                          objetotimer.start();
+//                                 
+//	                        }
+//	                        else
+//	                        {
+//	                            JOptionPane.showMessageDialog(null, "El nombre de usuario y/o contrasenia no son validos.");
+//	                            
+//	                            txtUsuario.setText("");    //limpiar campos
+//	                            txtContraseña.setText("");
+//
+//	                            txtUsuario.requestFocusInWindow();
+//	                        }
+//
+//	                    }
+//                            else
+//	                    {
+//	                        JOptionPane.showMessageDialog(null, "Debe escribir nombre de usuario y contrasenia.\n" +
+//	                            "NO puede dejar ningun campo vacio");
+//                                txtUsuario.requestFocusInWindow();
+//	                    }
+//
+//	                } catch (Exception e)
+//	                {
+//	                    e.printStackTrace();
+//	                }
+         
+       
+    }
 
 public class claseTimer implements ActionListener{
 

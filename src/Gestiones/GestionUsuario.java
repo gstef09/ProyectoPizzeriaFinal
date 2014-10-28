@@ -6,6 +6,9 @@
 
 package Gestiones;
 
+import CapaDatos.Conexionbd;
+import ClasesPojo.Usuario;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +17,14 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class GestionUsuario implements IGestion{
+
+    public GestionUsuario() {
+        Usuario  usuario =new Usuario(0,0,"","","");
+        Conexionbd.setPersona("DBA");
+        Conexionbd.setClave("sql");
+        Conexionbd.setCadenaConexion("jdbc:sqlanywhere:uid=DBA;pwd=sql;eng=ProyectoPizzeria;database=ProyectoPizzeria");
+    }
+    
 
     @Override
     public void Nuevo() {
@@ -27,7 +38,22 @@ public class GestionUsuario implements IGestion{
 
     @Override
     public void Consultar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+         Conexionbd.getInstancia().conectar();
+  ResultSet rs = Conexionbd.getInstancia().ejecutarbusqueda("select * FROM Usuario WHERE Login_Usuario = ");
+           while(rs.next()){
+               
+           }
+        }
+        catch(SQLException ex)
+        {
+            throw ex;
+        }
+        finally 
+        {
+            Conexionbd.getInstancia().desconectar();
+        }
     }
 
     @Override
