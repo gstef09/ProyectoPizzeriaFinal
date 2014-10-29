@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class GestionUsuario implements IGestion{
-
+private Usuario usuario;
     public GestionUsuario() {
-        Usuario  usuario =new Usuario(0,0,"","","");
+         usuario =new Usuario(0,0,"","","");
         Conexionbd.setPersona("DBA");
         Conexionbd.setClave("sql");
         Conexionbd.setCadenaConexion("jdbc:sqlanywhere:uid=DBA;pwd=sql;eng=ProyectoPizzeria;database=ProyectoPizzeria");
@@ -41,9 +41,9 @@ public class GestionUsuario implements IGestion{
         try
         {
          Conexionbd.getInstancia().conectar();
-  ResultSet rs = Conexionbd.getInstancia().ejecutarbusqueda("select * FROM Usuario WHERE Login_Usuario = ");
+  ResultSet rs = Conexionbd.getInstancia().ejecutarbusqueda("select * FROM Usuario WHERE Login_Usuario ='"+usuario.getLoginUsuario()+"' and Password_Usuario='"+usuario.getPasswordUsuario()+"'");
            while(rs.next()){
-               
+               usuario.setPermisoUsuario(rs.getString(5));
            }
         }
         catch(SQLException ex)
