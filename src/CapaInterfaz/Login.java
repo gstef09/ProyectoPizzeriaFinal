@@ -31,13 +31,13 @@ public class Login extends javax.swing.JFrame {
     
     public void IniciarSesion( ){
      final String u="admin" ,p="admin"; 
-        String user=txtUsuario.getText();
-          String pass=this.txtContraseña.getText();
+        String user=TXT1.getText();
+          String pass=this.TXT2.getText();
         objetotimer = new Timer(80,new claseTimer());
                         try
 	                {
 	                    //chekar si el usuario escrbio el nombre de usuario y pw
-	                    if (txtUsuario.getText().length() > 0 && txtContraseña.getText().length() > 0 )
+	                    if (TXT1.getText().length() > 0 && TXT2.getText().length() > 0 )
 	                    {
 	                        // Si el usuario si fue validado correctamente
 	                        if(  user.equals(u) && pass.equals(p) )    //enviar datos a validar
@@ -50,10 +50,10 @@ public class Login extends javax.swing.JFrame {
 	                        {
 	                            JOptionPane.showMessageDialog(null, "El nombre de usuario y/o contrasenia no son validos.");
 	                            
-	                            txtUsuario.setText("");    //limpiar campos
-	                            txtContraseña.setText("");
+	                            TXT1.setText("");    //limpiar campos
+	                            TXT2.setText("");
 
-	                            txtUsuario.requestFocusInWindow();
+	                            TXT1.requestFocusInWindow();
 	                        }
 
 	                    }
@@ -61,7 +61,7 @@ public class Login extends javax.swing.JFrame {
 	                    {
 	                        JOptionPane.showMessageDialog(null, "Debe escribir nombre de usuario y contrasenia.\n" +
 	                            "NO puede dejar ningun campo vacio");
-                                txtUsuario.requestFocusInWindow();
+                                TXT1.requestFocusInWindow();
 	                    }
 
 	                } catch (Exception e)
@@ -107,12 +107,12 @@ private void cerrar(){
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtUsuario = new java.awt.TextField();
+        TXT1 = new java.awt.TextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel3 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JPasswordField();
+        TXT2 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,9 +143,9 @@ private void cerrar(){
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CapaInterfaz/sesion.png"))); // NOI18N
 
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+        TXT2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+                TXT2ActionPerformed(evt);
             }
         });
 
@@ -164,8 +164,8 @@ private void cerrar(){
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TXT1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jButton1)
@@ -192,8 +192,8 @@ private void cerrar(){
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(TXT2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TXT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
@@ -223,9 +223,9 @@ private void cerrar(){
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+    private void TXT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    }//GEN-LAST:event_TXT2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,13 +263,13 @@ private void cerrar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.TextField TXT1;
+    private javax.swing.JPasswordField TXT2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JPasswordField txtContraseña;
-    private java.awt.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
