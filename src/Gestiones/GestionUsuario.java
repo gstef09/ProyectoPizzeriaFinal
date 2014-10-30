@@ -7,9 +7,12 @@
 package Gestiones;
 
 import CapaDatos.Conexionbd;
+import static CapaInterfaz.Login.TXT1;
+import static CapaInterfaz.Login.TXT2;
 import ClasesPojo.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,11 +43,30 @@ private Usuario usuario;
     public void Consultar() throws SQLException {
         try
         {
-         Conexionbd.getInstancia().conectar();
-  ResultSet rs = Conexionbd.getInstancia().ejecutarbusqueda("select * FROM Usuario WHERE Login_Usuario ='"+usuario.getLoginUsuario()+"' and Password_Usuario='"+usuario.getPasswordUsuario()+"'");
-           while(rs.next()){
-               usuario.setPermisoUsuario(rs.getString(5));
-           }
+         String usuario;
+        String password;
+        usuario = TXT1.getText();
+        password = TXT2.getText();
+       
+        if((password.isEmpty() || usuario.isEmpty()))
+        {
+            JOptionPane.showMessageDialog(null, "Ingrese su nombre de usuario y contraseña");
+        }
+        else
+       
+        {
+                 
+        Conexionbd.getInstancia().conectar();
+        ResultSet rs = Conexionbd.getInstancia().ejecutarbusqueda("SELECT * FROM Usuario where Login_Usuario='"+usuario+"' and Contraseña_Usuario='"+password+"';");
+        if(rs.next()){
+         JOptionPane.showMessageDialog(null, "logueo correcto");
+         }
+    else{
+        JOptionPane.showMessageDialog(null,"usuario y clave incorrecto");
+ 
+    
+        }
+        }
         }
         catch(SQLException ex)
         {

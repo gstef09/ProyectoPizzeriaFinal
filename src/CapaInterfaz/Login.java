@@ -6,11 +6,16 @@
 
 package CapaInterfaz;
 
+import Gestiones.GestionUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
 
 /**
  *
@@ -28,7 +33,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
 
-    
+    GestionUsuario usuario =new GestionUsuario();
     public void IniciarSesion( ){
      final String u="admin" ,p="admin"; 
         String user=TXT1.getText();
@@ -208,6 +213,12 @@ private void cerrar(){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         IniciarSesion();
+        try {
+             usuario.Consultar();
+         } catch (SQLException ex) {
+           //JOptionPane.showMessageDialog(null, ex);
+             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -263,8 +274,8 @@ private void cerrar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.TextField TXT1;
-    private javax.swing.JPasswordField TXT2;
+    public static java.awt.TextField TXT1;
+    public static javax.swing.JPasswordField TXT2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
