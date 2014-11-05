@@ -54,7 +54,7 @@ public class GestionFactura implements IGestion {
                 +","+factura.getCodigoEmpleado()+","+factura.getSubtotal()+","+factura.getDescuento()+","+factura.getIva()+","+factura.getTotalF()+factura.getCodigo_Pizzeria()+")");
           
           for (Detalle_Factura detFact:factura.getDetalle()){
-              Conexionbd.getInstancia().ejecutar("inser into FacturaCelular (Codigo_Detalle,N_Factura,Codigo_Producto,Nombre_Producto,Cantidad,Precio_Unitario,Precio_Venta)"
+              Conexionbd.getInstancia().ejecutar("inser into Detalle_Factura (Codigo_Detalle,N_Factura,Codigo_Producto,Nombre_Producto,Cantidad,Precio_Unitario,Precio_Venta)"
                       +"values("+detFact.getCodigo()+","
                       +factura.getN_Factura()+","
                       +detFact.getCodigoProducto()
